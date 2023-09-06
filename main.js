@@ -65,8 +65,8 @@ openModal = (coordinates) => {
     // modal-popup açma
     jsPanel.create({
         headerTitle: 'Çizim Bilgileri',
-        contentSize: '300 200',
-        position: 'center-top 0 58',
+        contentSize: '400 250', // boyutu arttırma
+        position: 'center-top 0 50', // konumu ayarlama
         content: `
             <form id="drawing-form">
                 <label for="name">İsim:</label>
@@ -88,8 +88,8 @@ openModal = (coordinates) => {
                 let number = form.elements.number.value;
                 // api üzerinden txt ya da json dosyasına yazma
                 saveDrawing(name, number, coordinates);
-                // modal-popup kapatma
-                panel.close();
+                // modal-popup kapatma yerine teşekkür mesajı gösterme
+                panel.content.innerHTML = '<p>Çiziminiz başarıyla kaydedildi. Teşekkürler.</p>';
             });
         }
     });
