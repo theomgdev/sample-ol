@@ -72,3 +72,18 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #111;
 }
+
+/* JSPanel Tema */
+
+.jsPanel-headerbar {
+  background-color: #333;
+}
+
+.jsPanel-title {
+  color: white !important;
+  font-weight: bold;
+}
+
+.jsPanel-btn {
+  color: white !important;
+}

@@ -27,7 +27,7 @@ initializeMap = () => {
         })
     });
 
-    // txt-json dosyasından verileri çekme
+    // txt-json dosyasından verileri çek
     loadDrawings();
 }
 
@@ -51,7 +51,7 @@ addInteraction = () => {
             // çizim işlemini sonlandır
             draw.setActive(false);
 
-            // modal-popup açma
+            // modal-popup aç
             openModal(event.feature.getGeometry().getCoordinates());
         });
 }
@@ -62,33 +62,36 @@ addDrawing = () => {
 }
 
 openModal = (coordinates) => {
-    // modal-popup açma
+    // modal-popup aç
     jsPanel.create({
-        headerTitle: 'Çizim Bilgileri',
-        contentSize: '400 250', // boyutu arttırma
-        position: 'center-top 0 50', // konumu ayarlama
+        headerTitle: 'Polyline Info',
+        contentSize: '400 250', // boyutu arttır
+        position: 'center-top 0 50', // konumu ayarla
+        resizeit: {
+            disable: true// boyutu değiştirilemez yap
+        },
         content: `
             <form id="drawing-form">
-                <label for="name">İsim:</label>
+                <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
-                <label for="number">Numara:</label>
+                <label for="number">Number:</label>
                 <input type="number" id="number" name="number" required><br>
-                <input type="submit" value="Kaydet">
+                <input type="submit" value="Save">
             </form>
         `,
         callback: function(panel) {
-            // formu seçme
+            // formu seç
             let form = panel.content.querySelector('#drawing-form');
             // form gönderildiğinde
             form.addEventListener('submit', function(event) {
-                // sayfa yenilenmesini engelleme
+                // sayfa yenilenmesini engelle
                 event.preventDefault();
-                // formdaki değerleri alma
+                // formdaki değerleri al
                 let name = form.elements.name.value;
                 let number = form.elements.number.value;
-                // api üzerinden txt ya da json dosyasına yazma
+                // api üzerinden txt ya da json dosyasına yaz
                 saveDrawing(name, number, coordinates);
-                // modal-popup kapatma
+                // modal-popup kapat
                 panel.close();
             });
         }
@@ -99,12 +102,12 @@ saveDrawing = (name, number, coordinates) => {
     // api url
     let url = baseApiUrl + 'save-drawing';
     // api key
-    let key = '$2b$10$...'; // buraya kendi api key'inizi yazın
+    let key = '$2b$10$...';
     // api headers
     let headers = {
         'Content-Type': 'application/json',
         'secret-key': key,
-        'collection-id': '...' // buraya kendi collection id'nizi yazın
+        'collection-id': '...'
     };
     // api body
     let body = {
@@ -146,7 +149,7 @@ showDrawings = () => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        // modal-popup açma
+        // modal-popup aç
         jsPanel.create({
             headerTitle: 'Çizim Listesi',
             contentSize: '500 300',
@@ -165,9 +168,9 @@ showDrawings = () => {
                 </table>
             `,
             callback: function(panel) {
-                // tablo gövdesini seçme
+                // tablo gövdesini seç
                 let tbody = panel.content.querySelector('#drawing-body');
-                // tabloya verileri ekleme
+                // tabloya verileri ekle
                 for (let drawing of data) {
                     let tr = document.createElement('tr');
                     let td1 = document.createElement('td');
@@ -181,7 +184,7 @@ showDrawings = () => {
                     tr.appendChild(td3);
                     tbody.appendChild(tr);
                 }
-                // datatable oluşturma
+                // datatable oluştur
                 $('#drawing-table').DataTable();
             }
         });
@@ -209,7 +212,7 @@ loadDrawings = () => {
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        // haritaya çizimleri ekleme
+        // haritaya çizimleri ekle
         for (let drawing of data) {
             let feature = new ol.Feature({
                 geometry: new ol.geom.LineString(drawing.coordinates)
