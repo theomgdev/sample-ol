@@ -1,4 +1,6 @@
-let map, draw, source, layer;
+let map, draw, source, layer, baseApiUrl;
+
+baseApiUrl = '';
 
 // Map'in oluşturulması
 initializeMap = () => {
@@ -93,11 +95,9 @@ openModal = (coordinates) => {
     });
 }
 
-//ÖNEMLİ: Backend için Asp.Net Web Api yazmadan önce testleri jsonbin üzerinde geçici bir api ile yapma kararı aldım.
-
 saveDrawing = (name, number, coordinates) => {
     // api url
-    let url = 'https://api.jsonbin.io/b';
+    let url = baseApiUrl + 'save-drawing';
     // api key
     let key = '$2b$10$...'; // buraya kendi api key'inizi yazın
     // api headers
@@ -131,7 +131,7 @@ saveDrawing = (name, number, coordinates) => {
 
 showDrawings = () => {
     // api url
-    let url = 'https://api.jsonbin.io/b/...'; // buraya kendi bin id'nizi yazın
+    let url = baseApiUrl + 'show-drawings';
     // api key
     let key = '$2b$10$...'; // buraya kendi api key'inizi yazın
     // api headers
@@ -194,7 +194,7 @@ showDrawings = () => {
 
 loadDrawings = () => {
     // api url
-    let url = 'https://api.jsonbin.io/b/...'; // buraya kendi bin id'nizi yazın
+    let url = baseApiUrl + 'load-drawings';
     // api key
     let key = '$2b$10$...'; // buraya kendi api key'inizi yazın
     // api headers
