@@ -88,8 +88,8 @@ openModal = (coordinates) => {
                 let number = form.elements.number.value;
                 // api üzerinden txt ya da json dosyasına yazma
                 saveDrawing(name, number, coordinates);
-                // modal-popup kapatma yerine teşekkür mesajı gösterme
-                panel.content.innerHTML = '<p>Çiziminiz başarıyla kaydedildi. Teşekkürler.</p>';
+                // modal-popup kapatma
+                panel.close();
             });
         }
     });
