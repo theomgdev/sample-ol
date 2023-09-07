@@ -64,7 +64,7 @@ addDrawing = () => {
 openModal = (coordinates) => {
     // modal-popup aç
     jsPanel.create({
-        headerTitle: 'Polyline Info',
+        headerTitle: 'Create Polyline',
         contentSize: '400 250', // boyutu arttır
         position: 'center-top 0 50', // konumu ayarla
         resizeit: {
@@ -143,7 +143,7 @@ listDrawings = () => {
         // modal-popup aç
         jsPanel.create({
             headerTitle: 'Polyline List',
-            contentSize: '500 300',
+            contentSize: '600 450',
             position: 'center-top 0 58',
             content: `
                 <div class="drawing-list">
