@@ -100,7 +100,7 @@ openModal = (coordinates) => {
 
 saveDrawing = (name, number, coordinates) => {
     // api url
-    let url = baseApiUrl + 'save-drawing';
+    let url = baseApiUrl + 'add-drawing';
     // api key
     let key = '$2b$10$...';
     // api headers
