@@ -1,6 +1,6 @@
 let map, draw, source, layer, baseApiUrl;
 
-baseApiUrl = 'http://localhost:5062/drawings/'; // webapi'nin temel url'ini belirle
+baseApiUrl = 'https://sampleol.azurewebsites.net/drawings/'; // webapi'nin temel url'ini belirle
 
 // Map'in oluşturulması
 initializeMap = () => {
