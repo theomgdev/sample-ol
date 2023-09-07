@@ -1,0 +1,14 @@
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/API
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/appsettings.Development.json
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/appsettings.json
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/Json/Drawings.json
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/API.dll
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/API.deps.json
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/API.runtimeconfig.json
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/API.pdb
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/Microsoft.AspNetCore.OpenApi.dll
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/Microsoft.OpenApi.dll
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/Newtonsoft.Json.dll
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/Swashbuckle.AspNetCore.Swagger.dll
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/publish/Swashbuckle.AspNetCore.SwaggerUI.dll
