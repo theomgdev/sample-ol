@@ -132,11 +132,11 @@ saveDrawing = (name, number, coordinates) => {
     });
 }
 
-showDrawings = () => {
+listDrawings = () => {
     // api url
-    let url = baseApiUrl + 'show-drawings';
+    let url = baseApiUrl + 'get-drawings';
     // api key
-    let key = '$2b$10$...'; // buraya kendi api key'inizi yazın
+    let key = '$2b$10$...';
     // api headers
     let headers = {
         'secret-key': key
@@ -197,9 +197,9 @@ showDrawings = () => {
 
 loadDrawings = () => {
     // api url
-    let url = baseApiUrl + 'load-drawings';
+    let url = baseApiUrl + 'get-drawings';
     // api key
-    let key = '$2b$10$...'; // buraya kendi api key'inizi yazın
+    let key = '$2b$10$...';
     // api headers
     let headers = {
         'secret-key': key
