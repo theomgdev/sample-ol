@@ -1,6 +1,6 @@
 let map, draw, source, layer, baseApiUrl;
 
-baseApiUrl = '';
+baseApiUrl = 'http://localhost:5062/drawings/'; // webapi'nin temel url'ini belirle
 
 // Map'in oluşturulması
 initializeMap = () => {
@@ -27,7 +27,7 @@ initializeMap = () => {
         })
     });
 
-    // txt-json dosyasından verileri çek
+    // webapi'den verileri çek
     loadDrawings();
 }
 
@@ -89,7 +89,7 @@ openModal = (coordinates) => {
                 // formdaki değerleri al
                 let name = form.elements.name.value;
                 let number = form.elements.number.value;
-                // api üzerinden txt ya da json dosyasına yaz
+                // webapi üzerinden veritabanına yaz
                 saveDrawing(name, number, coordinates);
                 // modal-popup kapat
                 panel.close();
@@ -99,52 +99,42 @@ openModal = (coordinates) => {
 }
 
 saveDrawing = (name, number, coordinates) => {
-    // api url
-    let url = baseApiUrl + 'add-drawing';
-    // api key
-    let key = '$2b$10$...';
-    // api headers
-    let headers = {
-        'Content-Type': 'application/json',
-        'secret-key': key,
-        'collection-id': '...'
-    };
-    // api body
+    // webapi url'i (çizim ekleme)
+    let url = baseApiUrl + 'create';
+    
+    // webapi body'si (çizim nesnesi)
     let body = {
-        name: name,
-        number: number,
-        coordinates: coordinates
+        Name: name,
+        Number: number,
+        Coordinates: coordinates.map(c => ({ X: c[0], Y: c[1] })) // koordinatları webapi'nin beklediği formata dönüştür (X ve Y değerleri olan nesneler)
     };
-    // api request
+    
+    // webapi request'i (POST metodu ile JSON verisi gönder)
     fetch(url, {
         method: 'POST',
-        headers: headers,
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(body)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        alert('Çizim başarıyla kaydedildi.');
-    })
-    .catch(error => {
-        console.error(error);
-        alert('Çizim kaydedilirken bir hata oluştu.');
-    });
+      })
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          alert('Polyline successfully saved.');
+      })
+      .catch(error => {
+          console.error(error);
+          alert('An error occured while saving polyline.');
+      });
 }
 
 listDrawings = () => {
-    // api url
-    let url = baseApiUrl + 'get-drawings';
-    // api key
-    let key = '$2b$10$...';
-    // api headers
-    let headers = {
-        'secret-key': key
-    };
-    // api request
+    // webapi url'i (çizim listesi alma)
+    let url = baseApiUrl + 'getall';
+    
+    // webapi request'i (GET metodu ile JSON verisi alma)
     fetch(url, {
-        method: 'GET',
-        headers: headers
+        method: 'GET'
     })
     .then(response => response.json())
     .then(data => {
@@ -178,7 +168,7 @@ listDrawings = () => {
                     let td2 = document.createElement('td');
                     td2.textContent = drawing.number;
                     let td3 = document.createElement('td');
-                    td3.textContent = JSON.stringify(drawing.coordinates);
+                    td3.textContent = JSON.stringify(drawing.coordinates.map(c => [c.x, c.y])); // koordinatları webapi'den gelen formattan harita için uygun formata dönüştür (dizi içinde dizi)
                     tr.appendChild(td1);
                     tr.appendChild(td2);
                     tr.appendChild(td3);
@@ -191,23 +181,17 @@ listDrawings = () => {
     })
     .catch(error => {
         console.error(error);
-        alert('Çizim listesi alınırken bir hata oluştu.');
+        alert('An error occured while listing drawings.');
     });
 }
 
 loadDrawings = () => {
-    // api url
-    let url = baseApiUrl + 'get-drawings';
-    // api key
-    let key = '$2b$10$...';
-    // api headers
-    let headers = {
-        'secret-key': key
-    };
-    // api request
+    // webapi url'i (çizim listesi alma)
+    let url = baseApiUrl + 'getall';
+    
+    // webapi request'i (GET metodu ile JSON verisi alma)
     fetch(url, {
-        method: 'GET',
-        headers: headers
+        method: 'GET'
     })
     .then(response => response.json())
     .then(data => {
@@ -215,13 +199,13 @@ loadDrawings = () => {
         // haritaya çizimleri ekle
         for (let drawing of data) {
             let feature = new ol.Feature({
-                geometry: new ol.geom.LineString(drawing.coordinates)
+                geometry: new ol.geom.LineString(drawing.coordinates.map(c => [c.x, c.y])) // koordinatları webapi'den gelen formattan harita için uygun formata dönüştür (dizi içinde dizi)
             });
             source.addFeature(feature);
         }
     })
     .catch(error => {
         console.error(error);
-        alert('Çizimler yüklenirken bir hata oluştu.');
+        alert('An error occured while loading drawings.');
     });
 }
