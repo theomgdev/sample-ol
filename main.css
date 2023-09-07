@@ -73,6 +73,15 @@ input[type="submit"]:hover {
   background-color: #111;
 }
 
+/* JSPanel Datatable */
+.drawing-list {
+  margin: 10px;
+}
+
+.dataTables_filter label {
+  text-align: left;
+}
+
 /* JSPanel Tema */
 
 .jsPanel-headerbar {

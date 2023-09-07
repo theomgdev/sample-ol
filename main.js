@@ -94,6 +94,7 @@ openModal = (coordinates) => {
                 // modal-popup kapat
                 panel.close();
             });
+            // TODO: panel kapanışında çizimi haritadan sil veya çizim işlemini kaldığı yerden başlat
         }
     });
 }
@@ -145,17 +146,19 @@ listDrawings = () => {
             contentSize: '500 300',
             position: 'center-top 0 58',
             content: `
-                <table id="drawing-table" class="display">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Number</th>
-                            <th>Coordinates</th>
-                        </tr>
-                    </thead>
-                    <tbody id="drawing-body">
-                    </tbody>
-                </table>
+                <div class="drawing-list">
+                    <table id="drawing-table" class="display">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Number</th>
+                                <th>Coordinates</th>
+                            </tr>
+                        </thead>
+                        <tbody id="drawing-body">
+                        </tbody>
+                    </table>
+                </div>
             `,
             callback: function(panel) {
                 // tablo gövdesini seç
