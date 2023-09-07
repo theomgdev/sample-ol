@@ -105,6 +105,12 @@ public class DrawingsController : ControllerBase
     [HttpPost("create")]
     public IActionResult Create(Drawing drawing)
     {
+        if(drawing == null)// Eğer çizim boşsa
+        {
+            // Hata döndür
+            return BadRequest();
+        }
+        
         // Dosyadaki verileri çekmek için oluşturulan değişken
         string jsonData = string.Empty;
 
@@ -132,15 +138,17 @@ public class DrawingsController : ControllerBase
         // Okunan veriyi JSON formatından C# nesnesine çevir
         var drawings = JsonConvert.DeserializeObject<List<Drawing>>(jsonData);
 
+        var ids = new List<int>();
+
         if (drawings != null && drawings.Any())// Eğer çizimler boş değilse
         {
             // Çizimlerin ID'lerini çek
-            var ids = drawings.Select(d => d.Id).ToList();
+            ids = drawings.Select(d => d.Id).ToList();
         }
         else
         {
-            // Çizimler boşsa ID'ler boş liste olsun
-            var ids = new List<int>();
+            // Boş bir drawing listesi oluştur
+            drawings = new List<Drawing>();
         }
 
         var maxId = 0;
