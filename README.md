@@ -8,10 +8,10 @@ Bu proje, harita üzerinde çizim yapma, kaydetme, sorgulama ve gösterme işlev
 
 Bu projeyi çalıştırmak için aşağıdaki adımları izleyin:
 
-1. Bu repoyu klonlayın ya da indirin.
+1. Bu repoyu klonlayın ya da indirin. Eğer localde çalışacaksanız bilgisayarınızda .Net Core 7 SDK yüklü olmalıdır. Yüklemek için [buraya](https://dotnet.microsoft.com/download/dotnet/7.0) tıklayın.
 2. Proje klasörüne girin.
-3. API klasöründe bulunan dosyaları bir IIS sunucusuna kopyalayın.
-4. main.js dosyasını açın ve 3. satırda bulunan `baseApiUrl` değişkeninin değerini kendi IIS sunucunuzun adresi ile değiştirin. '/' karakteri ile bitmesine dikkat edin.
+3. `dotnet run` ile localde API sunucunuzu başlatın veya API klasöründe bulunan dosyaları bir IIS sunucusuna kopyalayın.
+4. main.js dosyasını açın ve 3. satırda bulunan `baseApiUrl` değişkeninin değerini eğer localde çalışıyorsanız http://localhost:5062/drawings/ olarak aksi taktirde kendi IIS sunucunuzun adresi ile değiştirin. '/' karakteri ile bitmesine dikkat edin.
 3. index.html dosyasını bir tarayıcıda açın veya bir web sunucusuna kopyalayın.
 
 ## Kullanım
