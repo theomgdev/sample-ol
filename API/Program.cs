@@ -7,6 +7,39 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// CORS politikası tanımla (bütün kaynaklara izin ver)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin();
+        });
+});
+
+// CORS politikası tanımla (sadece localhost'a izin ver)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost");
+        });
+});
+
+// CORS politikası tanımla (sadece belirli bir web sitesine izin ver)
+builder.Services.AddCors(options =>
+{
+    // clientweb değişkeni ile web sitesinin URL'ini belirle
+    var clientweb = "https://google.com"; // varsayılan olarak google.com'a eşit
+
+    options.AddPolicy("AllowWebsite",
+        builder =>
+        {
+            builder.WithOrigins(clientweb);
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,6 +52,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseRouting();
+
+// CORS politikasını uygula
+app.UseCors("AllowAll"); // bütün kaynaklara izin veren politikayı uygula
+
+// app.UseCors("AllowLocalhost"); // sadece localhost'a izin veren politikayı uygula
+
+// app.UseCors("AllowWebsite"); // sadece belirli bir web sitesine izin veren politikayı uygula
 
 app.MapControllers();
 

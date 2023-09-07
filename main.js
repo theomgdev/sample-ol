@@ -141,16 +141,16 @@ listDrawings = () => {
         console.log(data);
         // modal-popup aç
         jsPanel.create({
-            headerTitle: 'Çizim Listesi',
+            headerTitle: 'Polyline List',
             contentSize: '500 300',
             position: 'center-top 0 58',
             content: `
                 <table id="drawing-table" class="display">
                     <thead>
                         <tr>
-                            <th>İsim</th>
-                            <th>Numara</th>
-                            <th>Koordinatlar</th>
+                            <th>Name</th>
+                            <th>Number</th>
+                            <th>Coordinates</th>
                         </tr>
                     </thead>
                     <tbody id="drawing-body">
