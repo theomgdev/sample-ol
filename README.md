@@ -4,6 +4,8 @@ Bu proje BaşarSoft için Cahit Karahan'ın katkılarıyla geliştirilmiştir.
 
 Bu proje, harita üzerinde çizim yapma, kaydetme, sorgulama ve gösterme işlevlerini gerçekleştiren basit bir web uygulamasıdır. Uygulama, openlayers, jspanel ve datatables gibi kütüphane ve servisleri kullanmaktadır. Backend için Asp.Net Web Api kullanılmaktadır.
 
+[TIKLA VE ŞİMDİ DENE](https://theomgdev.github.io/sample-ol)
+
 ## Kurulum
 
 Bu projeyi çalıştırmak için aşağıdaki adımları izleyin:
