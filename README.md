@@ -33,7 +33,7 @@ Projede kullanılan API'nin detaylarına aşağıdan ulaşabilirsiniz:
 - http://localhost:5062/drawings/update: Bu endpoint, txt-json dosyasındaki belirli bir id'ye sahip olan çizimi günceller. PUT metodu ile çalışır ve body olarak Id (integer), Name (string), Number (integer) ve Coordinates (array of objects) alanlarını alır.
 - http://localhost:5062/drawings/delete/{id}: Bu endpoint, txt-json dosyasındaki belirli bir id'ye sahip olan çizimi siler. DELETE metodu ile çalışır ve id parametresi alır.
 
-API'nin kullanımına dair bir Postman koleksiyonunu da [burada](https://github.com/theomgdev/sample-ol/blob/master/Tests/Ba%C5%9FarSoft%20OL.postman_collection.json) bulabilirsiniz. Bu rapor, API'nin nasıl çağrılacağına ve hangi sonuçları döndüreceğine dair örnekler içerir.
+API'nin kullanımına dair bir Postman koleksiyonunu da [burada](https://github.com/theomgdev/sample-ol/blob/master/Tests/Ba%C5%9FarSoft%20OL.postman_collection.json) bulabilirsiniz. Bu koleksiyon, API'nin nasıl çağrılacağına ve hangi sonuçları döndüreceğine dair örnekler içerir.
 
 ## Lisans
 
