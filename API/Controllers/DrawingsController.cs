@@ -243,7 +243,7 @@ public class DrawingsController : ControllerBase
         // Çizimleri dosyaya yaz
         System.IO.File.WriteAllText(filePath, jsonData);
 
-        // Çizimi döndür
+        // OK döndür
         return Ok();
     }
 }

@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "7f757481-5c5f-4e3d-9bf0-b0b07d8a6c3d",
+		"name": "BaşarSoft OL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29595961"
+	},
+	"item": [
+		{
+			"name": "getDrawings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5062/drawings/getall",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5062",
+					"path": [
+						"drawings",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDrawingById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5062/drawings/getbyid/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5062",
+					"path": [
+						"drawings",
+						"getbyid",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addDrawing",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Name\": \"Küp\",\n  \"Number\": 2,\n  \"Coordinates\": [\n    { \"X\": 0, \"Y\": 0 },\n    { \"X\": 0, \"Y\": 10 },\n    { \"X\": 10, \"Y\": 10 },\n    { \"X\": 10, \"Y\": 0 },\n    { \"X\": 0, \"Y\": 0 }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5062/drawings/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5062",
+					"path": [
+						"drawings",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateDrawing",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"Id\": 2,\n  \"Name\": \"Arsa\",\n  \"Number\": 2,\n  \"Coordinates\": [\n    { \"X\": 0, \"Y\": 0 },\n    { \"X\": 0, \"Y\": 10 },\n    { \"X\": 10, \"Y\": 10 },\n    { \"X\": 10, \"Y\": 0 },\n    { \"X\": 0, \"Y\": 0 }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5062/drawings/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5062",
+					"path": [
+						"drawings",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDrawing",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5062/drawings/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5062",
+					"path": [
+						"drawings",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
