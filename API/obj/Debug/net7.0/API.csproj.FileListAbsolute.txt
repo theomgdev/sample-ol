@@ -32,3 +32,4 @@
 /home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/obj/Debug/net7.0/API.pdb
 /home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/obj/Debug/net7.0/API.genruntimeconfig.cache
 /home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/obj/Debug/net7.0/ref/API.dll
+/home/cahit/Masaüstü/ON-DEV/WEB-ANDROID/OL/BaşarSoft/sample-ol/API/bin/Debug/net7.0/Newtonsoft.Json.dll

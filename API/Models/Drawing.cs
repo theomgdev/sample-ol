@@ -12,5 +12,5 @@ public class Drawing
     public int Number { get; set; } = 0;
 
     // Çizimin koordinatları
-    public Coordinate[] Coordinates { get; set; } = Array.Empty<Coordinate>();
+    public List<Coordinate> Coordinates { get; set; } = new List<Coordinate>();
 }
