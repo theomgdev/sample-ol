@@ -61,15 +61,40 @@ input {
   font-size: 16px;
 }
 
+.panel-footer {
+  /* align contents to the center */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* make the footer stick to the bottom */
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 20px);
+}
+
 input[type="submit"] {
   width: 40%;
   margin-left: auto;
   margin-right: auto;
   background-color: #333;
   color: white;
+  display: inline-block;
 }
 
 input[type="submit"]:hover {
+  background-color: #111;
+}
+
+input[type="reset"] {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #333;
+  color: white;
+  display: inline-block;
+}
+
+input[type="reset"]:hover {
   background-color: #111;
 }
 

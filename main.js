@@ -52,7 +52,7 @@ addInteraction = () => {
             draw.setActive(false);
 
             // modal-popup aç
-            openModal(event.feature.getGeometry().getCoordinates());
+            openModal(event.feature); // parametre olarak sadece koordinatlar değil, bütün feature'ı gönder
         });
 }
 
@@ -61,7 +61,7 @@ addDrawing = () => {
     draw.setActive(true);
 }
 
-openModal = (coordinates) => {
+openModal = (feature) => { // parametre olarak sadece koordinatlar değil, bütün feature'ı al
     // modal-popup aç
     jsPanel.create({
         headerTitle: 'Create Polyline',
@@ -70,13 +70,21 @@ openModal = (coordinates) => {
         resizeit: {
             disable: true// boyutu değiştirilemez yap
         },
+        // kapatma ve tam ekran butonlarını gizle
+        headerControls: {
+            close: 'remove',
+            maximize: 'remove',
+        },
         content: `
             <form id="drawing-form">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <label for="number">Number:</label>
                 <input type="number" id="number" name="number" required><br>
-                <input type="submit" value="Save">
+                <div class="panel-footer">
+                    <input type="submit" value="Save">
+                    <input type="reset" value="Cancel">
+                </div>
             </form>
         `,
         callback: function(panel) {
@@ -90,11 +98,20 @@ openModal = (coordinates) => {
                 let name = form.elements.name.value;
                 let number = form.elements.number.value;
                 // webapi üzerinden veritabanına yaz
-                saveDrawing(name, number, coordinates);
+                saveDrawing(name, number, feature.getGeometry().getCoordinates()); // feature'dan koordinatları al
                 // modal-popup kapat
                 panel.close();
             });
-            // TODO: panel kapanışında çizimi haritadan sil veya çizim işlemini kaldığı yerden başlat
+            
+            // form sıfırlandığında
+            form.addEventListener('reset', function(event) {
+                // sayfa yenilenmesini engelle
+                event.preventDefault();
+                // çizimi haritadan sil
+                source.removeFeature(feature);
+                // modal-popup kapat
+                panel.close();
+            });
         }
     });
 }
