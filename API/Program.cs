@@ -13,7 +13,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "AllowAll",
         builder =>
         {
-            builder.AllowAnyOrigin();
+            builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
         });
 });
 
@@ -23,7 +25,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowLocalhost",
         builder =>
         {
-            builder.WithOrigins("http://localhost");
+            builder.WithOrigins("http://localhost")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
         });
 });
 
@@ -36,7 +40,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowWebsite",
         builder =>
         {
-            builder.WithOrigins(clientweb);
+            builder.WithOrigins(clientweb)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
         });
 });
 
@@ -53,14 +59,14 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseRouting();
-
 // CORS politikasını uygula
-app.UseCors("AllowAll"); // bütün kaynaklara izin veren politikayı uygula
+app.UseCors("AllowAll"); // bütün kaynaklara izin veren politikayı uygula (debug için)
 
-// app.UseCors("AllowLocalhost"); // sadece localhost'a izin veren politikayı uygula
+// app.UseCors("AllowLocalhost"); // sadece localhost'a izin veren politikayı uygula (development için)
 
-// app.UseCors("AllowWebsite"); // sadece belirli bir web sitesine izin veren politikayı uygula
+// app.UseCors("AllowWebsite"); // sadece belirli bir web sitesine izin veren politikayı uygula (production için)
+
+app.UseRouting();
 
 app.MapControllers();
 
