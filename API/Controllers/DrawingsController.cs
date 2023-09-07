@@ -86,11 +86,19 @@ public class DrawingsController : ControllerBase
         // Okunan veriyi JSON formatından C# nesnesine çevir
         var drawings = JsonConvert.DeserializeObject<List<Drawing>>(jsonData);
 
-        // Çizimleri filtrele
-        var filteredDrawings = drawings.Where(d => d.Id == id).ToList();
+        if (drawings != null && drawings.Any())// Eğer çizimler boş değilse
+        {
+            // Çizimleri filtrele
+            var filteredDrawings = drawings.Where(d => d.Id == id).ToList();
 
-        // Filtrelenmiş çizimlerin listesini döndür
-        return Ok(filteredDrawings);
+            // Filtrelenmiş çizimlerin listesini döndür
+            return Ok(filteredDrawings);
+        }
+        else
+        {
+            // Çizimler boşsa boş liste döndür
+            return Ok(new List<Drawing>());
+        }
     }
 
     // POST: drawings/create
@@ -124,8 +132,16 @@ public class DrawingsController : ControllerBase
         // Okunan veriyi JSON formatından C# nesnesine çevir
         var drawings = JsonConvert.DeserializeObject<List<Drawing>>(jsonData);
 
-        // Çizimlerin ID'lerini çek
-        var ids = drawings.Select(d => d.Id).ToList();
+        if (drawings != null && drawings.Any())// Eğer çizimler boş değilse
+        {
+            // Çizimlerin ID'lerini çek
+            var ids = drawings.Select(d => d.Id).ToList();
+        }
+        else
+        {
+            // Çizimler boşsa ID'ler boş liste olsun
+            var ids = new List<int>();
+        }
 
         var maxId = 0;
 
@@ -182,8 +198,16 @@ public class DrawingsController : ControllerBase
         // Okunan veriyi JSON formatından C# nesnesine çevir
         var drawings = JsonConvert.DeserializeObject<List<Drawing>>(jsonData);
 
-        // Çizimleri güncelle
-        drawings = drawings.Select(d => d.Id == drawing.Id ? drawing : d).ToList();
+        if (drawings != null && drawings.Any())// Eğer çizimler boş değilse
+        {
+            // Çizimleri güncelle
+            drawings = drawings.Select(d => d.Id == drawing.Id ? drawing : d).ToList();
+        }
+        else
+        {
+            // Çizimler boşsa bad request döndür
+            return BadRequest();
+        }
 
         // Çizimleri JSON formatına çevir
         jsonData = JsonConvert.SerializeObject(drawings);
@@ -234,8 +258,16 @@ public class DrawingsController : ControllerBase
         // Okunan veriyi JSON formatından C# nesnesine çevir
         var drawings = JsonConvert.DeserializeObject<List<Drawing>>(jsonData);
 
-        // Çizimleri filtrele
-        drawings = drawings.Where(d => d.Id != id).ToList();
+        if (drawings != null && drawings.Any())// Eğer çizimler boş değilse
+        {
+            // Çizimleri filtrele
+            drawings = drawings.Where(d => d.Id != id).ToList();
+        }
+        else
+        {
+            // Çizimler boşsa OK döndür
+            return Ok();
+        }
 
         // Çizimleri JSON formatına çevir
         jsonData = JsonConvert.SerializeObject(drawings);
