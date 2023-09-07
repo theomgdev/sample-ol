@@ -2,6 +2,18 @@ let map, draw, source, layer, baseApiUrl;
 
 baseApiUrl = 'https://sampleol.azurewebsites.net/drawings/'; // webapi'nin temel url'ini belirle
 
+//toastr
+toastr.options = {
+    "positionClass": "toast-bottom-right",
+    "timeOut": "3000",
+    "extendedTimeOut": "1000",
+    "hideDuration": "1000",
+    "showDuration": "1000",
+    "progressBar": true,
+    "closeButton": true,
+    "newestOnTop": true
+}
+
 // Map'in oluşturulması
 initializeMap = () => {
     // Vektör veri kaynağının oluşturulması
@@ -109,6 +121,8 @@ openModal = (feature) => { // parametre olarak sadece koordinatlar değil, büt�
                 event.preventDefault();
                 // çizimi haritadan sil
                 source.removeFeature(feature);
+                // çizim iptal edildi mesajı göster
+                toastr.warning('Drawing canceled.');
                 // modal-popup kapat
                 panel.close();
             });
@@ -137,12 +151,12 @@ saveDrawing = (name, number, coordinates) => {
       })
       .then(response => response.json())
       .then(data => {
-          console.log(data);
-          alert('Polyline successfully saved.');
+            console.log(data);
+            toastr.success('Polyline successfully saved.');
       })
       .catch(error => {
-          console.error(error);
-          alert('An error occured while saving polyline.');
+            console.error(error);
+            toastr.error('An error occured while saving polyline.');
       });
 }
 
@@ -201,7 +215,7 @@ listDrawings = () => {
     })
     .catch(error => {
         console.error(error);
-        alert('An error occured while listing drawings.');
+        toastr.error('An error occured while listing drawings.');
     });
 }
 
@@ -226,6 +240,6 @@ loadDrawings = () => {
     })
     .catch(error => {
         console.error(error);
-        alert('An error occured while loading drawings.');
+        toastr.error('An error occured while loading drawings.');
     });
 }
