@@ -191,6 +191,14 @@ public class DrawingsController : ControllerBase
         // Çizimleri dosyaya yaz
         System.IO.File.WriteAllText(filePath, jsonData);
 
+        // İşlem yapılıp yapılmadığını kontrol et
+        var updatedDrawing = drawings.FirstOrDefault(d => d.Id == drawing.Id);
+        if (updatedDrawing == null)
+        {
+            // İşlem başarısız olduysa
+            return BadRequest();
+        }
+
         // Çizimi döndür
         return Ok(drawing);
     }
