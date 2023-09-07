@@ -38,5 +38,3 @@ API'nin kullanımına dair bir Postman koleksiyonunu da [burada](https://github.
 ## Lisans
 
 Bu projenin lisansı BaşarSoft'a aittir. BaşarSoft'un izni olmadan bu projeyi kullanamazsınız.
-
-Bu README.md dosyası, projenizi daha iyi anlamanıza yardımcı olmak için yazılmıştır. Eğer başka bir sorunuz varsa, lütfen bana sorun. 😊
