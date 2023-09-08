@@ -192,6 +192,8 @@ listDrawings = () => {
                 </div>
             `,
             callback: function(panel) {
+                // tabloyu seç
+                let table = panel.content.querySelector('#drawing-table');
                 // tablo gövdesini seç
                 let tbody = panel.content.querySelector('#drawing-body');
                 // tabloya verileri ekle
@@ -209,7 +211,7 @@ listDrawings = () => {
                     tbody.appendChild(tr);
                 }
                 // datatable oluştur
-                $('#drawing-table').DataTable();
+                $(table).DataTable();
             }
         });
     })
